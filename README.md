@@ -38,10 +38,8 @@ npm run preview
 
 ## Deploy (One Click)
 
-Update `your-repo-name` with your actual repository name.
-
-- Vercel: https://vercel.com/new/clone?repository-url=https://github.com/pinkythegawd/your-repo-name
-- Netlify: https://app.netlify.com/start/deploy?repository=https://github.com/pinkythegawd/your-repo-name
+- Vercel: https://vercel.com/new/clone?repository-url=https://github.com/pinkythegawd/universal-file-converter
+- Netlify: https://app.netlify.com/start/deploy?repository=https://github.com/pinkythegawd/universal-file-converter
 
 ## Notes
 
