@@ -1,0 +1,232 @@
+:root {
+  --bg: #f5efe3;
+  --card: #fffaf1;
+  --ink: #1d1c1a;
+  --muted: #605a52;
+  --line: #d6c8af;
+  --accent: #c6522e;
+  --accent-2: #146b63;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", sans-serif;
+  background: radial-gradient(circle at 20% 15%, #f9c784 0%, transparent 40%),
+    radial-gradient(circle at 85% 10%, #93b7be 0%, transparent 32%),
+    linear-gradient(160deg, #f2e9da, #ece0c9 55%, #e8dbc2);
+  color: var(--ink);
+}
+
+.background-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(to right, rgba(29, 28, 26, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(29, 28, 26, 0.03) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.app-shell {
+  width: min(1080px, 92vw);
+  margin: 2rem auto 3rem;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 90%, white 10%);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(29, 28, 26, 0.12);
+  animation: rise-in 500ms ease-out;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+}
+
+.eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-2);
+  margin: 0 0 0.4rem;
+}
+
+.hero-copy {
+  margin: 0.75rem 0 1.2rem;
+  color: var(--muted);
+  max-width: 72ch;
+}
+
+.creator-credit {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+.creator-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.hero-image-card {
+  margin: 1rem 0 1.2rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 28px rgba(18, 16, 12, 0.18);
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+}
+
+.tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tab.is-active {
+  background: var(--ink);
+  color: #fff;
+}
+
+.panel {
+  display: none;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem;
+  background: white;
+  animation: fade-slide 250ms ease;
+}
+
+.panel.is-active {
+  display: block;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 0.85rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 500;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+  background: #fffef9;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.action-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 0.8rem 0;
+}
+
+button,
+.download-link {
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.55rem 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease;
+}
+
+button:hover,
+.download-link:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--ink) 88%, white 12%);
+}
+
+.status {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  min-height: 1.2em;
+}
+
+.preview {
+  margin-top: 0.8rem;
+  padding: 0.8rem;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  background: #fffdfa;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-slide {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    padding: 0.8rem;
+  }
+
+  .panel {
+    padding: 0.8rem;
+  }
+}

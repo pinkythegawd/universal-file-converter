@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Universal File Converter</title>
+    <meta name="description" content="Universal File Converter by pinkythegawd (MikePinku). Convert images, audio, text encodings, and Markdown or HTML directly in the browser." />
+    <meta name="author" content="pinkythegawd (MikePinku)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Universal File Converter" />
+    <meta property="og:description" content="Client-side image, audio, text encoding, and Markdown or HTML converter." />
+    <meta property="og:image" content="/assets/img/945377.jpg" />
+    <meta property="og:site_name" content="Universal File Converter" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Universal File Converter" />
+    <meta name="twitter:description" content="Convert files directly in your browser. No backend needed." />
+    <meta name="twitter:image" content="/assets/img/945377.jpg" />
+    <link rel="icon" type="image/x-icon" href="/assets/img/20260309_113844.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="background-glow"></div>
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Client-Side Toolkit</p>
+        <h1>Universal File Converter</h1>
+        <p class="hero-copy">Convert images, audio, text encodings, and Markdown or HTML directly in your browser. No uploads. No backend.</p>
+        <p class="creator-credit">Created by <a href="https://github.com/pinkythegawd" target="_blank" rel="noopener noreferrer">pinkythegawd (MikePinku)</a></p>
+      </header>
+
+      <figure class="hero-image-card">
+        <img src="/assets/img/945377.jpg" alt="Illustrated beach city skyline at night" class="hero-image" />
+      </figure>
+
+      <nav class="tab-list" aria-label="Converter tools">
+        <button class="tab is-active" data-tab="images">Images</button>
+        <button class="tab" data-tab="audio">Audio</button>
+        <button class="tab" data-tab="text">Text Encodings</button>
+        <button class="tab" data-tab="markup">Markdown ⇄ HTML</button>
+      </nav>
+
+      <section class="panel is-active" id="panel-images">
+        <h2>Image Converter</h2>
+        <div class="form-grid">
+          <label>Source image
+            <input type="file" id="image-input" accept="image/png,image/jpeg,image/webp" />
+          </label>
+          <label>Target format
+            <select id="image-format">
+              <option value="image/png">PNG</option>
+              <option value="image/jpeg">JPG</option>
+              <option value="image/webp">WebP</option>
+            </select>
+          </label>
+          <label id="image-quality-wrap">Quality (JPG/WebP)
+            <input type="range" id="image-quality" min="0.1" max="1" step="0.05" value="0.9" />
+          </label>
+        </div>
+        <div class="action-row">
+          <button id="image-convert">Convert Image</button>
+          <a id="image-download" class="download-link" download hidden>Download</a>
+        </div>
+        <p id="image-status" class="status"></p>
+      </section>
+
+      <section class="panel" id="panel-audio">
+        <h2>Audio Converter</h2>
+        <div class="form-grid">
+          <label>Source audio
+            <input type="file" id="audio-input" accept="audio/*" />
+          </label>
+          <label>Target format
+            <select id="audio-format">
+              <option value="audio/wav">WAV</option>
+              <option value="audio/webm;codecs=opus">WebM (Opus)</option>
+              <option value="audio/ogg;codecs=opus">OGG (Opus)</option>
+            </select>
+          </label>
+        </div>
+        <div class="action-row">
+          <button id="audio-convert">Convert Audio</button>
+          <a id="audio-download" class="download-link" download hidden>Download</a>
+        </div>
+        <p id="audio-status" class="status"></p>
+      </section>
+
+      <section class="panel" id="panel-text">
+        <h2>Text Encoding Converter</h2>
+        <div class="form-grid">
+          <label>Source text file
+            <input type="file" id="text-input" accept="text/plain,.txt,.csv,.json,.md,.html" />
+          </label>
+          <label>Source encoding
+            <select id="text-source-encoding">
+              <option value="utf-8">UTF-8</option>
+              <option value="utf-16le">UTF-16 LE</option>
+              <option value="utf-16be">UTF-16 BE</option>
+              <option value="latin1">Latin-1 (ISO-8859-1)</option>
+            </select>
+          </label>
+          <label>Target encoding
+            <select id="text-target-encoding">
+              <option value="utf-8">UTF-8</option>
+              <option value="utf-16le">UTF-16 LE</option>
+              <option value="utf-16be">UTF-16 BE</option>
+              <option value="latin1">Latin-1 (ISO-8859-1)</option>
+            </select>
+          </label>
+        </div>
+        <textarea id="text-preview" rows="8" placeholder="Decoded text preview appears here..."></textarea>
+        <div class="action-row">
+          <button id="text-convert">Convert Text Encoding</button>
+          <a id="text-download" class="download-link" download hidden>Download</a>
+        </div>
+        <p id="text-status" class="status"></p>
+      </section>
+
+      <section class="panel" id="panel-markup">
+        <h2>Markdown ⇄ HTML</h2>
+        <div class="form-grid">
+          <label>Conversion mode
+            <select id="markup-mode">
+              <option value="md-to-html">Markdown to HTML</option>
+              <option value="html-to-md">HTML to Markdown</option>
+            </select>
+          </label>
+        </div>
+        <textarea id="markup-input" rows="10" placeholder="Paste Markdown or HTML here..."></textarea>
+        <div class="action-row">
+          <button id="markup-convert">Convert Markup</button>
+          <button id="markup-download">Download Result</button>
+        </div>
+        <textarea id="markup-output" rows="10" placeholder="Converted result..."></textarea>
+        <div id="markup-preview" class="preview"></div>
+        <p id="markup-status" class="status"></p>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
